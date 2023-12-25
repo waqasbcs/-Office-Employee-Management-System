@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Employee</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for better appearance */
+        .container {
+            margin-top: 50px;
+        }
+        .dropdown {
+            width: 300px; /* Adjust the width as needed */
+        }
+        .dropdown-toggle {
+            width: 100%;
+            text-align: left;
+        }
+        .dropdown-menu {
+            width: 100%;
+        }
+        /* Additional styles for better readability */
+        .dropdown-menu li a {
+            white-space: nowrap; /* Prevent text wrapping */
+            overflow: hidden; /* Hide overflow text */
+            text-overflow: ellipsis; /* Show ellipsis (...) for longer texts */
+        }
+        .dropdown-menu li a:hover {
+            background-color: #f8f9fa; /* Hover background color */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Remove an Employee</h1>
+
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Choose an employee to remove
+            </button>
+            <ul class="dropdown-menu">
+                {% for emp in emp %}
+                <li><a class="dropdown-item" href="{% url 'remove_employee' emp.id %}">{{ emp.first_name }} {{ emp.last_name }}</a></li>
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
